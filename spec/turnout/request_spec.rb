@@ -16,7 +16,7 @@ describe Turnout::Request do
       it { should be false}
     end
 
-    context 'with a maintenance file that sets allowed_paths and allowed_ips' do
+    context 'with a maintenance file that sets allowed_paths and allowed_ips and allowed_subdomains' do
       # maintenance.yml contains
       #   allowed_paths: [/uuddlrlrba.*]
       #   allowed_ips: [42.42.42.0/24]}

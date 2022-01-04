@@ -8,6 +8,7 @@ module Turnout
       :default_maintenance_page,
       :default_reason,
       :default_allowed_ips,
+      :default_allowed_subdomains,
       :skip_middleware,
       :default_allowed_paths,
       :default_response_code,
@@ -28,6 +29,7 @@ module Turnout
       @default_reason = "The site is temporarily down for maintenance.\nPlease check back soon."
       @default_allowed_paths = []
       @default_allowed_ips = []
+      @default_allowed_subdomains = []
       @default_response_code = 503
       @default_retry_after = 7200 # 2 hours by default
       @i18n = Turnout::OrderedOptions.new

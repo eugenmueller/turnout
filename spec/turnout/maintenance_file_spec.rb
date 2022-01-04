@@ -29,7 +29,7 @@ describe Turnout::MaintenanceFile do
       let(:hash) { maint_file.to_h }
 
       its(:to_h) { should be_a Hash }
-      it { expect(hash.keys).to eql [:reason, :allowed_paths, :allowed_ips, :response_code, :retry_after] }
+      it { expect(hash.keys).to eql [:reason, :allowed_paths, :allowed_ips, :allowed_subdomains, :response_code, :retry_after] }
       it { expect(hash[:reason]).to eql 'Oopsie!' }
       it { expect(hash[:allowed_paths]).to eql ['/uuddlrlrba.*'] }
       it { expect(hash[:allowed_ips]).to eql ['10.0.0.42', '192.168.1.0/24'] }
@@ -42,7 +42,7 @@ describe Turnout::MaintenanceFile do
       subject { yaml }
 
       its(:to_yaml) { should be_a String }
-      it { expect(yaml.keys).to eql ['reason', 'allowed_paths', 'allowed_ips', 'response_code', 'retry_after'] }
+      it { expect(yaml.keys).to eql ['reason', 'allowed_paths', 'allowed_ips', 'allowed_subdomains',  'response_code', 'retry_after'] }
       it { expect(yaml['reason']).to eql 'Oopsie!' }
       it { expect(yaml['allowed_paths']).to eql ['/uuddlrlrba.*'] }
       it { expect(yaml['allowed_ips']).to eql ['10.0.0.42', '192.168.1.0/24'] }
