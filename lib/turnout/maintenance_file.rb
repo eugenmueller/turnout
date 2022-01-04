@@ -5,7 +5,7 @@ module Turnout
   class MaintenanceFile
     attr_reader :path
 
-    SETTINGS = [:reason, :allowed_paths, :allowed_ips, :response_code, :retry_after]
+    SETTINGS = [:reason, :allowed_paths, :allowed_ips, :allowed_subdomains, :response_code, :retry_after]
     attr_reader(*SETTINGS)
 
     def initialize(path)
@@ -91,6 +91,17 @@ module Turnout
       end
 
       @allowed_paths = paths
+    end
+    
+    def allowed_subdomains=(subdomains)
+      if subdomains.is_a? String
+        # Grab everything between commas that aren't escaped with a backslash
+        subdomains = subdomains.to_s.split(/(?<!\\),\ ?/).map do |path|
+          subdomain.strip.gsub('\,', ',') # remove the escape characters
+        end
+      end
+
+      @allowed_subdomains = subdomains
     end
 
     # Splits strings on commas for easier importing of environment variables
