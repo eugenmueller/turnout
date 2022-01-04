@@ -96,7 +96,7 @@ module Turnout
     def allowed_subdomains=(subdomains)
       if subdomains.is_a? String
         # Grab everything between commas that aren't escaped with a backslash
-        subdomains = subdomains.to_s.split(/(?<!\\),\ ?/).map do |path|
+        subdomains = subdomains.to_s.split(/(?<!\\),\ ?/).map do |subdomain|
           subdomain.strip.gsub('\,', ',') # remove the escape characters
         end
       end
